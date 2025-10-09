@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @RestController
@@ -19,7 +21,7 @@ public class TipoReporteController {
         this.tipoReporteService = tipoReporteService;
     }
     @GetMapping
-    public ResponseEntity<?> obtenerTodo(){
+    public ResponseEntity<List<TipoReporteDto>> obtenerTodo(){
         return ResponseEntity.ok(this.tipoReporteService.obtenerTodo());
     }
     @GetMapping("{id}")

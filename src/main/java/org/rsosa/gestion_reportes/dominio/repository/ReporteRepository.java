@@ -1,5 +1,6 @@
 package org.rsosa.gestion_reportes.dominio.repository;
 
+import org.rsosa.gestion_reportes.dominio.dto.ModReporteDto;
 import org.rsosa.gestion_reportes.dominio.dto.ReporteDto;
 
 import java.util.List;
@@ -12,6 +13,6 @@ public interface ReporteRepository {
     List<ReporteDto> obtenerReportesPorPersonal(String persona);
     ReporteDto obtenerReportePorCodigo(Long id);
     ReporteDto guardarReporte(ReporteDto reporteDto);
-    ReporteDto actualizarReporte(Long id, ReporteDto reporteDto);
+    ReporteDto actualizarReporte(Long id, ModReporteDto modReporteDto);
     void eliminarReporte(Long id);
 }

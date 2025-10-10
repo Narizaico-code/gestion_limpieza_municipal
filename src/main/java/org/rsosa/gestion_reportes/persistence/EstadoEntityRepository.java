@@ -11,6 +11,7 @@ import org.rsosa.gestion_reportes.web.mapper.EstadoMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class EstadoEntityRepository implements EstadoRepository {
@@ -39,17 +40,17 @@ public class EstadoEntityRepository implements EstadoRepository {
 
     @Override
     public EstadoDto obtenerEstadoPorNombre(String nombre) {
-        Estado estado = this.crudEstadoEntity.findFirstByNombre(nombre);
-        if (estado == null){
+        Optional<Estado> estado = this.crudEstadoEntity.findByNombre(nombre);
+        if (estado.isEmpty()){
             throw new EstadoNoExisteException(nombre);
         }
-        return this.estadoMapper.toDto(estado);
+        return this.estadoMapper.toDto(estado.orElse(null));
     }
 
     @Override
     public EstadoDto guardarEstado(EstadoDto estadoDto) {
         String nombre = String.valueOf(estadoDto.name()).toUpperCase();
-        if (this.crudEstadoEntity.findFirstByNombre(nombre) != null){
+        if (this.crudEstadoEntity.findByNombre(nombre) != null){
             throw new EstadoYaExisteException(nombre);
         }
         Estado estado = this.estadoMapper.toEntity(estadoDto);

@@ -1,5 +1,6 @@
 package org.rsosa.gestion_reportes.web.mapper;
 
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -14,15 +15,13 @@ import java.util.List;
 public interface ContratacionMapper {
     @Mapping(source = "codigoContratacion", target = "hiring_id")
     @Mapping(source = "salario", target = "salary")
-    @Mapping(source = "vacantes", target = "vacancy")
+    @Mapping(source = "vacante", target = "vacancy")
+    @Mapping(source = "vacantesDisponibles", target = "available_vaca")
+    @Mapping(source = "municipalidad", target = "municipality")
     ContratacionDto toDto(Contratacion entity);
     List<ContratacionDto> toDto(Iterable<Contratacion> entities);
 
-@Mapping(source = "hiring_id", target = "codigoContratacion")
-@Mapping(source = "salary", target = "salario")
-@Mapping(source = "vacancy", target = "vacantes")
-Contratacion toEntity(ContratacionDto contratacionDto);
-void updateEntityFromDto(ContratacionDto contratacionDto, @MappingTarget Contratacion contratacion);
+    @InheritInverseConfiguration
+    Contratacion toEntity(ContratacionDto contratacionDto);
+    void updateEntityFromDto(ContratacionDto contratacionDto, @MappingTarget Contratacion contratacion);
 }
-
-

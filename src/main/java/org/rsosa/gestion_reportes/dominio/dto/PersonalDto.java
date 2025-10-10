@@ -1,9 +1,13 @@
 package org.rsosa.gestion_reportes.dominio.dto;
 
+import org.rsosa.gestion_reportes.dominio.PersonalEnum;
+
 public record   PersonalDto (
     Long personal_id,
     String name,
-    Integer number,
-    String email
+    String lastname,
+    String number,
+    String email,
+    PersonalEnum state
 ){
 }

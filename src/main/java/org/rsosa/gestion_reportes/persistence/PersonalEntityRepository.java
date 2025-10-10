@@ -6,8 +6,11 @@ import org.rsosa.gestion_reportes.dominio.repository.PersonalRepository;
 import org.rsosa.gestion_reportes.persistence.crud.CrudPersonalEntity;
 import org.rsosa.gestion_reportes.persistence.entity.Personal;
 import org.rsosa.gestion_reportes.web.mapper.PersonalMapper;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
+@Repository
 public class PersonalEntityRepository implements PersonalRepository {
     private final CrudPersonalEntity crudPersonalEntity;
     private final PersonalMapper personalMapper;

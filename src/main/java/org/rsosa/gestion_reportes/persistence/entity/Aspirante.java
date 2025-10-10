@@ -13,17 +13,17 @@ import lombok.NoArgsConstructor;
 public class Aspirante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "aspirante_id")
-    private Long CodigoAspirante;
+    @Column(name = "codigo_aspirante")
+    private Long codigoAspirante;
     @Column(nullable = false)
-    private String Nombre;
+    private String nombre;
     @Column(nullable = false)
-    private String Apellido;
+    private String apellido;
     @Column(nullable = false)
-    private Integer Telefono;
+    private String telefono;
     @Column(nullable = false)
     private String correo;
     @ManyToOne
-    @JoinColumn(name = "hiring_id", referencedColumnName = "hiring_id")
+    @JoinColumn(name = "codigo_contratacion", nullable = false)
     private Contratacion contratacion;
 }

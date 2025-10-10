@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Munipalidad {
+public class Municipalidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codigo_municipalidad")
-    private Long codigoMunipalidad;
+    private Long codigoMunicipalidad;
     @Column(nullable = false)
     private String zona;
     @Column(nullable = false)

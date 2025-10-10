@@ -1,6 +1,7 @@
 package org.rsosa.gestion_reportes.dominio.service;
 
 
+import org.rsosa.gestion_reportes.dominio.dto.ModReporteDto;
 import org.rsosa.gestion_reportes.dominio.dto.ReporteDto;
 import org.rsosa.gestion_reportes.dominio.repository.ReporteRepository;
 import org.springframework.stereotype.Service;
@@ -43,8 +44,8 @@ public class ReporteService {
         return this.reporteRepository.guardarReporte(reporteDto);
     }
 
-    public ReporteDto actualizarReporte(Long id, ReporteDto reporteDto){
-        return this.reporteRepository.actualizarReporte(id, reporteDto);
+    public ReporteDto actualizarReporte(Long id, ModReporteDto modReporteDto){
+        return this.reporteRepository.actualizarReporte(id, modReporteDto);
     }
 
     public void eliminarReporte(Long id){

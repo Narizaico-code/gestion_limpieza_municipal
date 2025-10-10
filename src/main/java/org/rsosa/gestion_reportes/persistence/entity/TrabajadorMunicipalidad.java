@@ -6,22 +6,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Contrataciones")
+@Table(name = "TrabajadoresMunicipalidad")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Contratacion {
+public class TrabajadorMunicipalidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codigo_contratación")
-    private Long codigoContratacion;
-    @Column(nullable = false)
-    private String salario;
-    @Column(nullable = false)
-    private String vacante;
-    private Integer vacantesDisponibles;
+    private Long codigoTrabajadorMunicipal;
+
+    @ManyToOne
+    @JoinColumn(name = "codigo_personal", nullable = false)
+    private Personal personal;
 
     @ManyToOne
     @JoinColumn(name = "codigo_municipalidad", nullable = false)
     private Municipalidad municipalidad;
+
 }

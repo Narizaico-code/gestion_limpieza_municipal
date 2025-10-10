@@ -4,8 +4,8 @@ public record AspiranteDto(
         Long aspirante_id,
         String name,
         String surname,
-        Integer number,
+        String number,
         String email,
-        Long hiring_id
+        ContratacionDto hiring
 ) {
 }

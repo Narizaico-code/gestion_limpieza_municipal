@@ -13,10 +13,10 @@ import java.util.List;
 public interface ReporteMapper {
     @Mapping(source = "codigoReporte", target = "report_id")
     @Mapping(source = "descripcion", target = "description")
-    @Mapping(source = "estado.nombre", target = "state.name")
-    @Mapping(source = "vecino.nombre", target = "neighbor.name_neighbor")
-    @Mapping(source = "personalAsignado.nombre", target = "staff.name")
-    @Mapping(source = "tipoReporte.nombre", target = "report_type.name")
+    @Mapping(source = "estado", target = "state")
+    @Mapping(source = "vecino", target = "neighbor")
+    @Mapping(source = "personalAsignado", target = "staff")
+    @Mapping(source = "tipoReporte", target = "report_type")
     ReporteDto toDto(Reporte entity);
     List<ReporteDto> toDto(Iterable<Reporte> entities);
 

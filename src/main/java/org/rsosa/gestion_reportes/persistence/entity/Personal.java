@@ -19,6 +19,10 @@ public class Personal {
     private String nombre;
     @Column(nullable = false)
     private String apellido;
+    @Column
+    private String telefono;
     @Column(nullable = false, unique = true)
-    private String email;
+    private String correo;
+    @Column(nullable = false)
+    private String estado;
 }

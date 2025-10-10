@@ -1,4 +1,11 @@
 package org.rsosa.gestion_reportes.dominio.dto;
 
-public class ReporteDto {
+public record ReporteDto(
+        Long report_id,
+        String description,
+        EstadoDto state,
+        VecinoDto neighbor,
+        PersonalDto staff,
+        TipoReporteDto report_type
+) {
 }

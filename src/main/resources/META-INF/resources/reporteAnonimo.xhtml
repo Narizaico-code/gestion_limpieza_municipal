@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Reporte Anónimo</title>
+        <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css"/>
+        <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/themes/primeone-dark.css"/>
+        <style>
+            .form-field {
+                margin-bottom: 20px;
+            }
+            .form-field label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: bold;
+            }
+            .form-field .ui-inputfield,
+            .form-field .ui-selectonemenu {
+                width: 100%;
+            }
+        </style>
+    </h:head>
+    <h:body style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 2rem;">
+        <h:form id="formReporte">
+            <div class="flex justify-content-center">
+                <div class="border-round-xl p-shadow-5 p-5"
+                     style="max-width: 600px; background-color: white; width: 100%;">
+
+                    <div class="text-center mb-4">
+                        <i class="pi pi-file-edit" style="font-size: 3rem; color: #667eea;"></i>
+                        <h2 class="text-3xl font-bold mt-2" style="color: #333;">Crear Reporte Anónimo</h2>
+                        <p style="color: #666;">No es necesario iniciar sesión</p>
+                    </div>
+
+                    <p:messages id="messages" showDetail="true"/>
+
+                    <div style="padding: 20px;">
+                        <div class="form-field">
+                            <label for="descripcion">Descripción del Problema</label>
+                            <p:inputTextarea id="descripcion"
+                                             value="#{reporteAnonimoControllerWeb.descripcion}"
+                                             rows="5"
+                                             placeholder="Describa detalladamente el problema..."
+                                             required="true"
+                                             requiredMessage="La descripción es obligatoria"
+                                             maxlength="500"
+                                             style="width: 100%;"/>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="zona">Zona</label>
+                            <p:selectOneMenu id="zona"
+                                             value="#{reporteAnonimoControllerWeb.zona}"
+                                             required="true"
+                                             requiredMessage="Debe seleccionar una zona"
+                                             style="width: 100%;">
+                                <f:selectItem itemLabel="Seleccione una zona" itemValue="#{null}" noSelectionOption="true"/>
+                                <f:selectItems value="#{reporteAnonimoControllerWeb.zonasDisponibles}"/>
+                            </p:selectOneMenu>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="tipoReporte">Tipo de Reporte</label>
+                            <p:selectOneMenu id="tipoReporte"
+                                             value="#{reporteAnonimoControllerWeb.tipoReporteId}"
+                                             required="true"
+                                             requiredMessage="Debe seleccionar un tipo de reporte"
+                                             style="width: 100%;">
+                                <f:selectItem itemLabel="Seleccione un tipo" itemValue="#{null}" noSelectionOption="true"/>
+                                <f:selectItems value="#{reporteAnonimoControllerWeb.tiposReporte}"
+                                               var="tipo"
+                                               itemLabel="#{tipo.nameReportType}"
+                                               itemValue="#{tipo.reportTypeId}"/>
+                            </p:selectOneMenu>
+                        </div>
+
+                        <div style="margin-top: 30px;">
+                            <p:commandButton value="Crear Reporte"
+                                             icon="pi pi-check"
+                                             action="#{reporteAnonimoControllerWeb.crearReporteAnonimo}"
+                                             update="formReporte"
+                                             styleClass="p-button-lg p-button-success"
+                                             style="width: 100%; margin-bottom: 10px;"/>
+
+                            <p:button value="Volver al Inicio"
+                                      icon="pi pi-home"
+                                      outcome="index.xhtml"
+                                      styleClass="p-button-lg p-button-secondary"
+                                      style="width: 100%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p:dialog header="¡Reporte Creado!"
+                      widgetVar="modalExito"
+                      modal="true"
+                      width="400"
+                      closable="false"
+                      resizable="false">
+                <div style="padding: 20px; text-align: center;">
+                    <i class="pi pi-check-circle" style="font-size: 3rem; color: #27ae60; margin-bottom: 15px;"></i>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                        <h:outputText value="#{reporteAnonimoControllerWeb.mensajeExito}"/>
+                    </p>
+                    <p:button value="Volver al Inicio"
+                              icon="pi pi-home"
+                              outcome="index.xhtml"
+                              styleClass="p-button-success p-button-lg"/>
+                </div>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</h:html>

@@ -34,4 +34,8 @@ public class ContratacionService {
     public void eliminarContratacion(Long id) {
         this.contratacionRepository.eliminarContratacion(id);
     }
+
+    public ContratacionDto obtenerPorCodigo(Long contratacionId) {
+        return this.contratacionRepository.obtenerPorCodigo(contratacionId);
+    }
 }

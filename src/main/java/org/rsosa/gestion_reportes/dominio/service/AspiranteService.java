@@ -34,4 +34,6 @@ public class AspiranteService {
     public void eliminarAspirante(Long id) {
         this.aspiranteRepository.eliminarAspirante(id);
     }
+
+
 }
